@@ -117,7 +117,6 @@ class Test:
     def test_results(self):
         lst = [1 for ex in self.ex_list if ex.ex_answer is not None] # Только задания у которых есть ответы
         result = ['Результаты тестовой части']
-        max_len = 55
         for i in range(len(lst)):
             ans = self.answers[i]
             if ans is None:
@@ -128,7 +127,7 @@ class Test:
             else:
                 cor = '-'
             res = f'{i + 1}. {ans} {cor}'
-            ans = f'(Правильный: {self.ex_list[i].ex_answer})'.rjust(max_len - len(res))
+            ans = f'    ({self.ex_list[i].ex_answer})'
             result.append(res + ans)
         result.append(f'{self.count_answers()} / {len(lst)}')
         return '\n'.join(result)
